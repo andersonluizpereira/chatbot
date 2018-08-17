@@ -4,33 +4,16 @@ const TelegramBaseController = Telegram.TelegramBaseController
 const TextCommand = Telegram.TextCommand
 const chatbot = new Telegram.Telegram('357005364:AAHkiEwtHHRXjF8rYvLsTvyo-R8LMC74lZY')
 class CasaDoCodigoController extends TelegramBaseController {
+    //http://newsapi.org/v2/top-headlines?country=br&category=business&apiKey=c1c39a0722cb44d4ad56266eea6cb9c4  
     sendNovidades(scope) {
-        // request('http://newsapi.org/v2/top-headlines?country=br&category=business&apiKey=c1c39a0722cb44d4ad56266eea6cb9c4', function(error, response, body) {
-        //     // console.log('error:', error);
-        //     //console.log('statusCode:', response && response.statusCode);
-        //     // var parsedAlert = JSON.parse(body);
-        //     //console.log(parsedAlert)
-        //     //scope.sendMessage('As novidades são ' + JSON.parse(body));
-        // });
-        // request.end();
-        var options = {
-            hostname: 'http://newsapi.org',
-            port: 80,
-            path: '/v2/top-headlines?country=br&category=business&apiKey=c1c39a0722cb44d4ad56266eea6cb9c4',
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
-        };
-
-        var req = http.request(options, function(res) {
-            res.setEncoding('utf8');
-            res.on('data', function(data) {
-                console.log(data); // I can't parse it because, it's a string. why?
-            });
+        request('https://newsapi.org/v2/top-headlines?country=br&category=business&apiKey=c1c39a0722cb44d4ad56266eea6cb9c4', function(error, response, body) {
+            // console.log('error:', error);
+            console.log('statusCode:', response && response.statusCode);
+            // var parsedAlert = JSON.parse(body);
+            //console.log(parsedAlert)
+            //scope.sendMessage('As novidades são ' + JSON.parse(body));
         });
-        reqA.on('error', function(e) {
-            console.log('problem with request: ' + e.message);
-        });
-        reqA.end();
+        request.end();
     }
     sendTemperaturas(scope) {
         request('http://api.openweathermap.org/data/2.5/weather?q=Sao%20PAULO&APPID=22addef068318d53f14f6b2e5891fe37', function(error, response, body) {
